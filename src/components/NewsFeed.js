@@ -2,55 +2,56 @@ import React, { useEffect, useState } from "react";
 
 function NewsFeed(counter) {
   const [articles, setArticles] = useState([]);
-  const count = counter.counter;
 
   useEffect(() => {
-    fetchArticles(count);
-  }, [count]);
+    const count = counter.counter;
+    console.log(count);
+    const fetchArticles = async () => {
+      if (count === 0) {
+        setArticles(
+          await (
+            await fetch("https://api.spaceflightnewsapi.net/v3/articles")
+          ).json()
+        );
+      } else {
+        const newCount = count.toString();
 
-  const fetchArticles = async (counter) => {
-    console.log(counter);
-    if (counter === 0) {
-      console.log("fel: ");
-      setArticles(
-        await (
-          await fetch("https://api.spaceflightnewsapi.net/v3/articles")
-        ).json()
-      );
-    } else {
-      const newCount = counter.toString();
-
-      console.log(
-        "hej: ",
-        await (
-          await fetch(
-            "https://api.spaceflightnewsapi.net/v3/articles?_start=" + newCount
-          )
-        ).json()
-      );
-    }
-  };
-
-  const PrintArticles = () => {
-    console.log(articles);
-
-    const articleElement = articles.map(({ imageUrl, id }) => (
-      <div key={id}>
-        <img
-          src={imageUrl}
-          alt="Headline images"
-          style={{ maxHeight: "50px" }}
-        />
-      </div>
-    ));
-    return articleElement;
-  };
+        const response = await fetch(
+          "https://api.spaceflightnewsapi.net/v3/articles?_start=" + newCount
+        );
+        const data = await response.json();
+        console.log("data: ", data);
+        data.forEach((element) => {
+          setArticles((articles) => [...articles, element]);
+        });
+      }
+    };
+    fetchArticles();
+  }, [counter]);
 
   return (
-    <>
-      <PrintArticles />
-    </>
+    <div>
+      {console.log(articles)}
+      {articles.map(({ imageUrl, id }) => (
+        <div key={id}>
+          <img
+            src={imageUrl}
+            alt="Headline images"
+            style={{ maxHeight: "50px" }}
+          />
+        </div>
+      ))}
+    </div>
   );
 }
 
 export default NewsFeed;
+
+// console.log(
+//     await (
+//       await fetch(
+//         "https://api.spaceflightnewsapi.net/v3/articles?_start=" +
+//           newCount
+//       )
+//     ).json()
+//   );
