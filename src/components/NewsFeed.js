@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
+import Table from "react-bootstrap/Table";
 
 function NewsFeed(counter) {
   const [articles, setArticles] = useState([]);
+  console.log(articles);
 
   useEffect(() => {
     const count = counter.counter;
-    console.log(count);
     const fetchArticles = async () => {
       if (count === 0) {
         setArticles(
@@ -20,7 +21,6 @@ function NewsFeed(counter) {
           "https://api.spaceflightnewsapi.net/v3/articles?_start=" + newCount
         );
         const data = await response.json();
-        console.log("data: ", data);
         data.forEach((element) => {
           setArticles((articles) => [...articles, element]);
         });
@@ -30,18 +30,33 @@ function NewsFeed(counter) {
   }, [counter]);
 
   return (
-    <div>
-      {console.log(articles)}
-      {articles.map(({ imageUrl, id }) => (
-        <div key={id}>
-          <img
-            src={imageUrl}
-            alt="Headline images"
-            style={{ maxHeight: "50px" }}
-          />
-        </div>
-      ))}
-    </div>
+    <>
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Title</th>
+          </tr>
+        </thead>
+        <tbody>
+          {articles.map(({ publishedAt, id, imageUrl, title }) => (
+            <tr key={id}>
+              <td>
+                {publishedAt.slice(5, 10)}-{publishedAt.slice(11, 16)}
+              </td>
+              <td>
+                <img
+                  src={imageUrl}
+                  alt="Article picture"
+                  style={{ maxHeight: "50px" }}
+                />
+              </td>
+              <td>{title}</td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    </>
   );
 }
 
