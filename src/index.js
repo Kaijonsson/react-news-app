@@ -10,6 +10,8 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
+// MOBILE FIRST!
+
 // API :: https://api.spaceflightnewsapi.net/v3/documentation#/Article/
 // FIRST PAGE :: TABLE LISTING LASTEST NEWS MAX 10 ARTICLES
 // PAGINATE FOR NEXT 10
