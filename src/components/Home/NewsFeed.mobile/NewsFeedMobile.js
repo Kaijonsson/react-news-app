@@ -39,17 +39,19 @@ function NewsFeedMobile(counter) {
   return (
     <div id="newsfeedmobilemaindiv">
       {articles.map(({ id, title, imageUrl, publishedAt }) => (
-        <div key={id} className="newsCardContainer">
-          <div className="listItem" id="imageContainer">
-            <img src={imageUrl} alt="newspic" className="newsImage" />
-          </div>
-          <div className="listItem" id="title">
-            {title}
-          </div>
-          <div className="listItem" id="date">
-            {publishedAt.slice(5, 10)}-{publishedAt.slice(11, 16)}
-          </div>
+        <div>
           <ItemSeparatorDiv />
+          <div key={id} className="newsCardContainer">
+            <div className="listItem" id="imageContainer">
+              <img src={imageUrl} alt="newspic" className="newsImage" />
+            </div>
+            <div className="listItem" id="title">
+              {title}
+            </div>
+            <div className="listItem" id="date">
+              {publishedAt.slice(5, 10)}-{publishedAt.slice(11, 16)}
+            </div>
+          </div>
         </div>
       ))}
     </div>

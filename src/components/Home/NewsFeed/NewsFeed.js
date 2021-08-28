@@ -35,28 +35,16 @@ function NewsFeed(counter) {
   return (
     <>
       <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Picture</th>
-            <th>Title</th>
-          </tr>
-        </thead>
         <tbody>
           {articles.map(({ publishedAt, id, imageUrl, title }) => (
-            <tr
-              key={id}
-              style={{
-                backgroundColor: globalStyles.secondaryWhite,
-              }}
-            >
-              <td>
+            <tr key={id}>
+              <td className="tableData">
                 {publishedAt.slice(5, 10)}-{publishedAt.slice(11, 16)}
               </td>
               <td>
                 <img src={imageUrl} alt="Article" className="newsImage" />
               </td>
-              <td>{title}</td>
+              <td className="tableData">{title}</td>
             </tr>
           ))}
         </tbody>
