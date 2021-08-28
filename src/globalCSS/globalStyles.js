@@ -6,5 +6,6 @@ brown: #414535
 white: #f2e3bc
 beige: #c19875
 */
-  mainBackground: "#f2e3bc",
+  mainBackground: "white",
+  // secondaryWhite: "#f2e3bc",
 };

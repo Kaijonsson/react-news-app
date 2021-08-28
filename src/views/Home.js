@@ -1,22 +1,26 @@
 import React, { useState } from "react";
-import "./Home.mobile.css";
-import globalStyles from "../globalCSS/globalStyles";
-import styled from "styled-components";
-import NewsFeed from "../components/NewsFeed";
+import "./Home.style/Home.mobile.css";
 
-const HomeContainer = styled.div`
-  background: ${globalStyles.mainBackground};
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-`;
+import NewsFeed from "../components/Home/NewsFeed";
+import Button from "react-bootstrap/Button";
+import { HomeContainer } from "./Home.style/Styled.Home";
+
 function Home() {
   const [counter, setCounter] = useState(0);
+
+  const Reset = () => {
+    if (counter) {
+      return <Button onClick={() => setCounter(0)}>Reset</Button>;
+    } else {
+      return null;
+    }
+  };
+
   return (
     <HomeContainer id="one" className="mainBG">
+      <Reset />
       <NewsFeed counter={counter} />
-      <button onClick={() => setCounter(counter + 10)}>Click me</button>
+      <Button onClick={() => setCounter(counter + 10)}>Click me</Button>
     </HomeContainer>
   );
 }
