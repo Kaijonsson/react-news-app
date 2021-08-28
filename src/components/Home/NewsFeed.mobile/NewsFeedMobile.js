@@ -5,10 +5,12 @@ import { ItemSeparatorDiv } from "./NewsFeed.styled";
 
 function NewsFeedMobile(counter) {
   const [articles, setArticles] = useState([]);
+  const [mounted, setMounted] = useState(true);
 
   useEffect(() => {
     const count = counter.counter;
     const fetchArticles = async () => {
+      if (mounted) return;
       if (count === 0) {
         setArticles(
           await (
@@ -28,7 +30,9 @@ function NewsFeedMobile(counter) {
       }
     };
     fetchArticles();
-    return () => setArticles([]);
+    return () => {
+      setMounted(false);
+    };
   }, [counter]);
 
   return (
