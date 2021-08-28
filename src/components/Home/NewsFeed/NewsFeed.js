@@ -3,7 +3,6 @@ import Table from "react-bootstrap/Table";
 
 import "./Newsfeed.mobile.css";
 import "./NewsFeed.desktop.css";
-import globalStyles from "../../../globalCSS/globalStyles";
 
 function NewsFeed(counter) {
   const [articles, setArticles] = useState([]);
