@@ -6,9 +6,11 @@ import "./NewsFeed.desktop.css";
 
 function NewsFeed(counter) {
   const [articles, setArticles] = useState([]);
+  const [mounted, setMounted] = useState(true);
 
   useEffect(() => {
     const count = counter.counter;
+    // if (!mounted) return;
     const fetchArticles = async () => {
       if (count === 0) {
         setArticles(
@@ -29,7 +31,10 @@ function NewsFeed(counter) {
       }
     };
     fetchArticles();
-  }, [counter]);
+    return () => {
+      setMounted(false);
+    };
+  }, [counter, mounted]);
 
   return (
     <>

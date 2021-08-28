@@ -10,7 +10,7 @@ function NewsFeedMobile(counter) {
   useEffect(() => {
     const count = counter.counter;
     const fetchArticles = async () => {
-      if (mounted) return;
+      // if (mounted) return;
       if (count === 0) {
         setArticles(
           await (
@@ -33,7 +33,7 @@ function NewsFeedMobile(counter) {
     return () => {
       setMounted(false);
     };
-  }, [counter]);
+  }, [counter, mounted]);
 
   return (
     <div id="newsfeedmobilemaindiv">
