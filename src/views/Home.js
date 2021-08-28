@@ -27,12 +27,14 @@ function Home() {
   return (
     <HomeContainer id="one" className="mainBG">
       <Reset />
-      {width < 600 ? (
+      {width <= 767 ? (
         <NewsFeedMobile counter={counter} />
       ) : (
         <NewsFeed counter={counter} />
       )}
-      <Button onClick={() => setCounter(counter + 10)}>Click me</Button>
+      <Button onClick={() => setCounter(counter + 10)} id="botButton">
+        Click me
+      </Button>
     </HomeContainer>
   );
 }

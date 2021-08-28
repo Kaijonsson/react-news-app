@@ -1,0 +1,45 @@
+@media only screen and (max-width: 767px) {
+
+.newsCardContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 40vh;
+    margin-top: 5px;
+    
+}
+.listItem{
+    list-style: none;
+    display: flex;
+    width: 100%;
+}
+.newsImage {
+    height: 150px;
+width: auto;
+margin-top: 10px;
+}
+#imageContainer{
+    padding: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 3;
+    z-index: 1;
+}
+#title {
+    padding: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+}
+#date{
+    padding: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+}

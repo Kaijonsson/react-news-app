@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+import globalStyles from "../../../globalCSS/globalStyles";
 
 import "./NewsFeedMobile.mobile.css";
+
+const ItemSeparatorDiv = styled.div`
+  height: 3px;
+  border-bottom: 3px solid ${globalStyles.mainBorderColor};
+`;
 
 function NewsFeedMobile(counter) {
   const [articles, setArticles] = useState([]);
@@ -30,14 +37,19 @@ function NewsFeedMobile(counter) {
   }, [counter]);
 
   return (
-    <div>
+    <div id="newsfeedmobilemaindiv">
       {articles.map(({ id, title, imageUrl, publishedAt }) => (
-        <div key={id}>
-          <li>{title}</li>
-          <li>
-            <img src={imageUrl} alt="newspic" style={{ height: "50px" }} />
-          </li>
-          <li>{publishedAt}</li>
+        <div key={id} className="newsCardContainer">
+          <div className="listItem" id="imageContainer">
+            <img src={imageUrl} alt="newspic" className="newsImage" />
+          </div>
+          <div className="listItem" id="title">
+            {title}
+          </div>
+          <div className="listItem" id="date">
+            {publishedAt.slice(5, 10)}-{publishedAt.slice(11, 16)}
+          </div>
+          <ItemSeparatorDiv />
         </div>
       ))}
     </div>

@@ -1,11 +1,15 @@
 export default {
   /*
-Light blue: #96bbbb
-darker blue: #618985
-brown: #414535
-white: #f2e3bc
-beige: #c19875
+light beige: #F1E2D7  
+white: #F9F9F7
+pink beige: #F8D5C2
+light blue: #DEEAE8
+darker blue: #CDDCDF
+lighter pink beige: #F3E7E3
+almost white: #F8EEEA
+pink: #F5D3C5
 */
-  mainBackground: "white",
+  mainBackground: "#F8EEEA",
+  mainBorderColor: "#DEEAE8",
   // secondaryWhite: "#f2e3bc",
 };
