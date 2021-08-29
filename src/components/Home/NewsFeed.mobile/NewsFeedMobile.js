@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import "./NewsFeedMobile.mobile.css";
 import { ItemSeparatorDiv } from "./NewsFeed.styled";
 
+import { useHistory } from "react-router-dom";
+
 function NewsFeedMobile(counter) {
   const [articles, setArticles] = useState([]);
   const [mounted, setMounted] = useState(true);
@@ -35,12 +37,30 @@ function NewsFeedMobile(counter) {
     };
   }, [counter, mounted]);
 
+  const history = useHistory();
+
+  const openNewPage = (title, imageUrl, summary, url) => {
+    const location = {
+      pathname: "/summarizedNews",
+      state: {
+        title: title,
+        imageUrl: imageUrl,
+        summary: summary,
+        url: url,
+      },
+    };
+    history.push(location);
+  };
+
   return (
     <div id="newsfeedmobilemaindiv">
-      {articles.map(({ id, title, imageUrl, publishedAt }) => (
+      {articles.map(({ id, title, imageUrl, publishedAt, summary, url }) => (
         <div key={id}>
           <ItemSeparatorDiv />
-          <div className="newsCardContainer">
+          <div
+            className="newsCardContainer"
+            onClick={() => openNewPage(title, imageUrl, summary, url)}
+          >
             <div className="listItem" id="imageContainer">
               <img src={imageUrl} alt="newspic" className="newsImage" />
             </div>

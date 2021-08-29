@@ -8,11 +8,9 @@ import "./NewsFeed.desktop.css";
 function NewsFeed(counter) {
   const [articles, setArticles] = useState([]);
   const [mounted, setMounted] = useState(true);
-  const history = useHistory();
 
   useEffect(() => {
     const count = counter.counter;
-    // if (!mounted) return;
     const fetchArticles = async () => {
       if (count === 0) {
         setArticles(
@@ -38,13 +36,19 @@ function NewsFeed(counter) {
     };
   }, [counter, mounted]);
 
+  const history = useHistory();
+
   const openNewPage = (title, imageUrl, summary, url) => {
     const location = {
       pathname: "/summarizedNews",
-      state: { title: title, imageUrl: imageUrl, summary: summary, url: url },
+      state: {
+        title: title,
+        imageUrl: imageUrl,
+        summary: summary,
+        url: url,
+      },
     };
     history.push(location);
-    // use history.push('/some/path') here
   };
 
   return (
@@ -56,6 +60,7 @@ function NewsFeed(counter) {
               <tr
                 key={id}
                 onClick={() => openNewPage(title, imageUrl, summary, url)}
+                className="tableRows"
               >
                 <td className="tableData">
                   {publishedAt.slice(5, 10)}-{publishedAt.slice(11, 16)}

@@ -5,6 +5,7 @@ import "./SummarizedNews.style/SummarizedNews.css";
 
 function SummarizedNews() {
   const location = useLocation();
+  console.log(location);
 
   return <div></div>;
 }
