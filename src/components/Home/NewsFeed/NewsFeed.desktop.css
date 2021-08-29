@@ -8,4 +8,14 @@
         font-size: 1.2em;
         font-weight: 600;
     }
+    #linkContainer{
+
+    }
+    .pageLinks:visited{
+        text-decoration: none;
+    }
+    .pageLinks:link{
+        text-decoration: none;
+
+    }
 }
