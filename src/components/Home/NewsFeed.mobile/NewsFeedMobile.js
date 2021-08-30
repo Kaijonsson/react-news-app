@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import "./NewsFeedMobile.mobile.css";
-import { ItemSeparatorDiv } from "./NewsFeed.styled";
+import { ItemSeparatorDiv } from "../../../globalCSS/styledComponents";
 
 import { useHistory } from "react-router-dom";
 
@@ -56,7 +56,6 @@ function NewsFeedMobile(counter) {
     <div id="newsfeedmobilemaindiv">
       {articles.map(({ id, title, imageUrl, publishedAt, summary, url }) => (
         <div key={id}>
-          <ItemSeparatorDiv />
           <div
             className="newsCardContainer"
             onClick={() => openNewPage(title, imageUrl, summary, url)}
@@ -71,6 +70,7 @@ function NewsFeedMobile(counter) {
               {publishedAt.slice(5, 10)}-{publishedAt.slice(11, 16)}
             </div>
           </div>
+          <ItemSeparatorDiv />
         </div>
       ))}
     </div>

@@ -7,7 +7,6 @@ export const HomeContainer = styled.div`
   flex-direction: column;
   padding: 5%;
 `;
-//STYLED COMPONENTS
 export const StyledButton = styled.button`
   background-color: ${globalStyles.lightBlue};
   border-radius: ${globalStyles.buttonBorderRadius};
@@ -22,4 +21,8 @@ export const StyledButton = styled.button`
     background-color: ${globalStyles.darkerBlue};
     padding: 5px;
   }
+`;
+export const ItemSeparatorDiv = styled.div`
+  height: 3px;
+  border-bottom: 3px solid ${globalStyles.mainBorderColor};
 `;

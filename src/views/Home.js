@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "./Home.style/Home.mobile.css";
 
 import useWindowSize from "../hooks/WindowSizeHook";
 import NewsFeedMobile from "../components/Home/NewsFeed.mobile/NewsFeedMobile";
