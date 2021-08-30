@@ -7,3 +7,18 @@ export const HomeContainer = styled.div`
   flex-direction: column;
   padding: 5%;
 `;
+export const StyledButton = styled.button`
+  background-color: ${globalStyles.lightBlue};
+  border-radius: ${globalStyles.buttonBorderRadius};
+  border-style: none;
+  font-size: ${globalStyles.fontSize};
+  font-weight: 500;
+  margin-top: ${globalStyles.elementMargin};
+  margin-bottom: ${globalStyles.elementMargin};
+
+  &:hover {
+    cursor: pointer;
+    background-color: ${globalStyles.darkerBlue};
+    padding: 5px;
+  }
+`;

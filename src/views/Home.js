@@ -4,12 +4,11 @@ import "./Home.style/Home.mobile.css";
 import useWindowSize from "../hooks/WindowSizeHook";
 import NewsFeedMobile from "../components/Home/NewsFeed.mobile/NewsFeedMobile";
 import NewsFeed from "../components/Home/NewsFeed/NewsFeed";
-import Button from "react-bootstrap/Button";
-import { HomeContainer } from "./Home.style/Styled.Home";
+import { HomeContainer, StyledButton } from "./Home.style/Styled.Home";
 
 function Home() {
   const [counter, setCounter] = useState(0);
-  const [screenWidth, setScreenWitdh] = useState();
+  const [, setScreenWitdh] = useState();
   const [width] = useWindowSize();
 
   useEffect(() => {
@@ -18,7 +17,9 @@ function Home() {
 
   const Reset = () => {
     if (counter) {
-      return <Button onClick={() => setCounter(0)}>Reset</Button>;
+      return (
+        <StyledButton onClick={() => setCounter(0)}>Minimize</StyledButton>
+      );
     } else {
       return null;
     }
@@ -32,9 +33,10 @@ function Home() {
       ) : (
         <NewsFeed counter={counter} />
       )}
-      <Button onClick={() => setCounter(counter + 10)} id="botButton">
-        Click me
-      </Button>
+      <StyledButton onClick={() => setCounter(counter + 10)} id="botButton">
+        More Articles
+      </StyledButton>
+      <Reset />
     </HomeContainer>
   );
 }
