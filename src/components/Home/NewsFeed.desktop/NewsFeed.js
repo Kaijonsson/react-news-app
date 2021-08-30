@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
 import { useHistory } from "react-router-dom";
 
-import "./Newsfeed.mobile.css";
 import "./NewsFeed.desktop.css";
 
 function NewsFeed(counter) {
