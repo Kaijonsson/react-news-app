@@ -25,4 +25,5 @@ export const StyledButton = styled.button`
 export const ItemSeparatorDiv = styled.div`
   height: 3px;
   border-bottom: 3px solid ${globalStyles.mainBorderColor};
+  width: 100%;
 `;

@@ -37,7 +37,7 @@ function NewsFeed(counter) {
 
   const history = useHistory();
 
-  const openNewPage = (title, imageUrl, summary, url) => {
+  const openNewPage = (title, imageUrl, summary, url, date) => {
     const location = {
       pathname: "/summarizedNews",
       state: {
@@ -45,6 +45,7 @@ function NewsFeed(counter) {
         imageUrl: imageUrl,
         summary: summary,
         url: url,
+        publishedAt: date,
       },
     };
     history.push(location);
@@ -58,7 +59,9 @@ function NewsFeed(counter) {
             ({ publishedAt, id, imageUrl, title, summary, url }) => (
               <tr
                 key={id}
-                onClick={() => openNewPage(title, imageUrl, summary, url)}
+                onClick={() =>
+                  openNewPage(title, imageUrl, summary, url, publishedAt)
+                }
                 className="tableRows"
               >
                 <td className="tableData">

@@ -1,30 +1,47 @@
 import React from "react";
 import { useLocation } from "react-router";
+import { Link } from "react-router-dom";
 
-import { HomeContainer, ItemSeparatorDiv } from "../globalCSS/styledComponents";
+import {
+  HomeContainer,
+  ItemSeparatorDiv,
+  StyledButton,
+} from "../globalCSS/styledComponents";
 import "./SummarizedNews.style/SummarizedNews.mobile.css";
 
 function SummarizedNews() {
   const location = useLocation();
-  console.log(location);
   const newsPic = location.state.imageUrl;
   const title = location.state.title;
   const summary = location.state.summary;
   const URL = location.state.url;
+  const publishedAt = location.state.publishedAt;
 
   return (
     <HomeContainer id="mainContainer">
-      <div id="imageContainer">
+      <StyledButton>
+        <Link to="/">Home</Link>
+      </StyledButton>
+      <div id="image">
         <img src={newsPic} alt={newsPic} id="mainPicture" />
       </div>
       <ItemSeparatorDiv />
-      <div id="ingress">
+      <div id="summaryTitle">
         <h1>{title}</h1>
       </div>
       <ItemSeparatorDiv />
-      <div id="summary">{summary}</div>
+      <div id="summary">
+        <p>{summary}</p>
+      </div>
       <ItemSeparatorDiv />
-      <div id="articleURL">{URL}</div>
+      <div id="articleURL">
+        <a href={URL} target="_blank">
+          Article Website
+        </a>
+        <p>
+          Published at: {publishedAt.slice(5, 10)}-{publishedAt.slice(11, 16)}
+        </p>
+      </div>
     </HomeContainer>
   );
 }

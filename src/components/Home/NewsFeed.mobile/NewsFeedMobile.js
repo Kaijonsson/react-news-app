@@ -39,7 +39,7 @@ function NewsFeedMobile(counter) {
 
   const history = useHistory();
 
-  const openNewPage = (title, imageUrl, summary, url) => {
+  const openNewPage = (title, imageUrl, summary, url, date) => {
     const location = {
       pathname: "/summarizedNews",
       state: {
@@ -47,6 +47,7 @@ function NewsFeedMobile(counter) {
         imageUrl: imageUrl,
         summary: summary,
         url: url,
+        publishedAt: date,
       },
     };
     history.push(location);
@@ -58,7 +59,9 @@ function NewsFeedMobile(counter) {
         <div key={id}>
           <div
             className="newsCardContainer"
-            onClick={() => openNewPage(title, imageUrl, summary, url)}
+            onClick={() =>
+              openNewPage(title, imageUrl, summary, url, publishedAt)
+            }
           >
             <div className="listItem" id="imageContainer">
               <img src={imageUrl} alt="newspic" className="newsImage" />

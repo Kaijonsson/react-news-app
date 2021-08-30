@@ -1,13 +1,29 @@
 @media only screen and (max-width: 767px) {
     #mainContainer {
         align-items: center;
+        min-height: 100vh;
+        justify-content: space-between;
     }
-    #imageContainer{
+    #image{
     }
     #mainPicture {
         height: auto;
         width: 100%;
     }
+    #summary{
+        font-weight:500;
+        
+    };
+    #articleURL{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }    
+    /* #summaryTitle{
+
+    };
+    */
 
     
 
