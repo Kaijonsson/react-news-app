@@ -15,6 +15,7 @@ export const StyledButton = styled.button`
   font-weight: 500;
   margin-top: ${globalStyles.elementMargin};
   margin-bottom: ${globalStyles.elementMargin};
+  width: 100%;
 
   &:hover {
     cursor: pointer;

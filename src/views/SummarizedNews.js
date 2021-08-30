@@ -8,6 +8,7 @@ import {
   StyledButton,
 } from "../globalCSS/styledComponents";
 import "./SummarizedNews.style/SummarizedNews.mobile.css";
+import "./SummarizedNews.style/SummarizedNews.desktop.css";
 
 function SummarizedNews() {
   const location = useLocation();
@@ -19,7 +20,7 @@ function SummarizedNews() {
 
   return (
     <HomeContainer id="mainContainer">
-      <StyledButton>
+      <StyledButton id="backButton">
         <Link to="/">Home</Link>
       </StyledButton>
       <div id="image">

@@ -1,0 +1,32 @@
+@media only screen and (min-width: 767px) {
+    #mainContainer {
+        align-items: center;
+        min-height: 110vh;
+        justify-content: space-between;
+        padding: 0;
+    }
+    #backButton{
+        width: 80%;
+    }
+    #mainPicture {
+        height: auto;
+        width: 100%;
+    }
+    #summary{
+        font-weight:500;
+        padding-left: 40px;
+        padding-right: 40px;
+        text-align: center;
+        
+    };
+    #articleURL{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }    
+    /* #summaryTitle{
+
+    };
+    */
+
+}
