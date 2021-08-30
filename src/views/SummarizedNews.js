@@ -1,13 +1,14 @@
 import React from "react";
 import { useLocation } from "react-router";
 
-import "./SummarizedNews.style/SummarizedNews.css";
+import { HomeContainer } from "../globalCSS/styledComponents";
+import "./SummarizedNews.style/SummarizedNews.mobile.css";
 
 function SummarizedNews() {
   const location = useLocation();
   console.log(location);
 
-  return <div></div>;
+  return <HomeContainer id="mainContainer"></HomeContainer>;
 }
 
 export default SummarizedNews;

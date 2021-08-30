@@ -1,4 +1,4 @@
-import globalStyles from "../../globalCSS/globalStyles";
+import globalStyles from "./globalStyles";
 import styled from "styled-components";
 
 export const HomeContainer = styled.div`
@@ -7,6 +7,7 @@ export const HomeContainer = styled.div`
   flex-direction: column;
   padding: 5%;
 `;
+//STYLED COMPONENTS
 export const StyledButton = styled.button`
   background-color: ${globalStyles.lightBlue};
   border-radius: ${globalStyles.buttonBorderRadius};

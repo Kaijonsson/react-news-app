@@ -3,8 +3,8 @@ import "./Home.style/Home.mobile.css";
 
 import useWindowSize from "../hooks/WindowSizeHook";
 import NewsFeedMobile from "../components/Home/NewsFeed.mobile/NewsFeedMobile";
-import NewsFeed from "../components/Home/NewsFeed/NewsFeed";
-import { HomeContainer, StyledButton } from "./Home.style/Styled.Home";
+import NewsFeed from "../components/Home/NewsFeed.desktop/NewsFeed";
+import { StyledButton, HomeContainer } from "../globalCSS/styledComponents";
 
 function Home() {
   const [counter, setCounter] = useState(0);

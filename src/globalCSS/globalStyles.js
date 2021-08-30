@@ -1,3 +1,4 @@
+//CSS
 const globalStyle = {
   mainBackground: "#F8EEEA",
   mainBorderColor: "#DEEAE8",
