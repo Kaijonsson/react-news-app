@@ -37,7 +37,7 @@ function App() {
       };
       loadApi();
     }
-  }, [watcher]);
+  }, [watcher, dispatch, realtimeList.articles.length]);
 
   return (
     <div>

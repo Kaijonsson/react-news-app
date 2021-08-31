@@ -1,5 +1,4 @@
 export const fetchApi = (payload) => {
-  console.log(payload);
   return {
     type: "BASIC_CALL",
     payload: payload,
@@ -14,7 +13,6 @@ export const fetchNext = (data) => {
 };
 
 export const resetList = (payload) => {
-  console.log(payload);
   return {
     type: "RESET_LIST",
     payload: payload,

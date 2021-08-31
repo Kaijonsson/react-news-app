@@ -29,7 +29,7 @@ function NewsFeedMobile() {
         }
       })();
     }
-  }, [counter]);
+  }, [counter, dispatch]);
 
   const openNewPage = (title, imageUrl, summary, url, date) => {
     const location = {
