@@ -28,3 +28,11 @@ export const ItemSeparatorDiv = styled.div`
   border-bottom: 3px solid ${globalStyles.mainBorderColor};
   width: 100%;
 `;
+
+export const StyledSearchField = styled.input`
+  font-size: ${globalStyles.fontSize};
+  font-weight: ${globalStyles.fontWeight};
+  border-radius: ${globalStyles.buttonBorderRadius};
+  border-color: ${globalStyles.darkerBlue};
+  width: 50%;
+`;

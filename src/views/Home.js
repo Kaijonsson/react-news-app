@@ -7,6 +7,7 @@ import { StyledButton, HomeContainer } from "../globalCSS/styledComponents";
 
 import { CounterIncrement, CounterReset } from "../actions";
 import { useSelector, useDispatch } from "react-redux";
+import SearchField from "../components/Home/search/SearchField";
 
 function Home() {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ function Home() {
 
   return (
     <HomeContainer id="one" className="mainBG">
+      <SearchField />
       <Reset />
       {width <= 767 ? <NewsFeedMobile /> : <NewsFeed />}
       <StyledButton

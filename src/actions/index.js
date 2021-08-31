@@ -19,6 +19,14 @@ export const resetList = (payload) => {
   };
 };
 
+export const searchList = (payload) => {
+  console.log(payload);
+  return {
+    type: "SEARCH_LIST",
+    payload: payload,
+  };
+};
+
 export const CounterIncrement = (number) => {
   return {
     type: "INCREMENT",
