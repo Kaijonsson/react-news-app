@@ -1,6 +1,7 @@
 const initialState = {
   articles: [],
   error: "",
+  searchIsActive: false,
 };
 
 const ApiCaller = (state = initialState, action) => {
@@ -23,14 +24,11 @@ const ApiCaller = (state = initialState, action) => {
 
       const returnSearchValue = articlesArray.map((article) => {
         if (article.title.includes(action.payload)) {
-          console.log("article: ", article.title);
           return article;
         }
       });
 
-      console.log("array to print: ", returnSearchValue);
-
-      if (returnSearchValue) {
+      if (returnSearchValue.length !== 0) {
         return {
           articles: returnSearchValue.filter(
             (element) => element !== undefined
@@ -42,6 +40,11 @@ const ApiCaller = (state = initialState, action) => {
           error: "Couldn't find search-term",
         };
       }
+    case "SEARCH_TRUE_FALSE":
+      return {
+        ...state,
+        searchIsActive: action.payload,
+      };
     default:
       return state;
   }

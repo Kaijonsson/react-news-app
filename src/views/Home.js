@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 
+import "./Home.style/Home.desktop.css";
+import "./Home.style/Home.mobile.css";
+
 import useWindowSize from "../hooks/WindowSizeHook";
 import NewsFeedMobile from "../components/Home/NewsFeed.mobile/NewsFeedMobile";
 import NewsFeed from "../components/Home/NewsFeed.desktop/NewsFeed";
@@ -14,6 +17,10 @@ function Home() {
   const [, setScreenWitdh] = useState();
   const [width] = useWindowSize();
   const counter = useSelector((state) => state.CounterReducer);
+  const realtimeList = useSelector((state) => state.ApiCaller);
+
+  const error = realtimeList.error;
+  console.log(error);
 
   useEffect(() => {
     setScreenWitdh(width);
@@ -31,9 +38,18 @@ function Home() {
     }
   };
 
+  const ErrorMessage = () => {
+    return (
+      <div id="errorContainer">
+        <h1 id="errorHeader">{error}</h1>
+      </div>
+    );
+  };
+
   return (
     <HomeContainer id="one" className="mainBG">
       <SearchField />
+      {error && ErrorMessage()}
       <Reset />
       {width <= 767 ? <NewsFeedMobile /> : <NewsFeed />}
       <StyledButton

@@ -20,9 +20,15 @@ export const resetList = (payload) => {
 };
 
 export const searchList = (payload) => {
-  console.log(payload);
   return {
     type: "SEARCH_LIST",
+    payload: payload,
+  };
+};
+
+export const searchTrueOrFalse = (payload) => {
+  return {
+    type: "SEARCH_TRUE_FALSE",
     payload: payload,
   };
 };

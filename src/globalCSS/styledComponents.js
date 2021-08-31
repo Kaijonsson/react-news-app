@@ -6,6 +6,7 @@ export const HomeContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding: 5%;
+  min-height: 100vh;
 `;
 export const StyledButton = styled.button`
   background-color: ${globalStyles.lightBlue};

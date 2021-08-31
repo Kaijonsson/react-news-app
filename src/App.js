@@ -12,6 +12,10 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    if (realtimeList.searchIsActive === true) {
+      console.log(realtimeList.searchIsActive);
+      return;
+    }
     if (watcher === 0 && realtimeList.articles.length > 0) {
       const reloadList = async () => {
         const response = await fetch(
@@ -37,7 +41,12 @@ function App() {
       };
       loadApi();
     }
-  }, [watcher, dispatch, realtimeList.articles.length]);
+  }, [
+    realtimeList.searchIsActive,
+    watcher,
+    dispatch,
+    realtimeList.articles.length,
+  ]);
 
   return (
     <div>

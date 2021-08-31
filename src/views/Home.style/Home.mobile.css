@@ -1,0 +1,11 @@
+@media only screen and (max-width: 767px) {
+    #errorContainer{
+        display: flex;
+        justify-content: center;
+        align-items: center
+    };
+    #errorHeader{
+        text-align: center;
+    };
+
+}

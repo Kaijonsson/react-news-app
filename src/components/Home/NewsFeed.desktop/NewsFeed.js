@@ -15,8 +15,6 @@ function NewsFeed() {
   const counter = useSelector((state) => state.CounterReducer);
   const history = useHistory();
 
-  console.log(apiArray);
-
   useEffect(() => {
     if (counter >= 10) {
       (async () => {
@@ -31,7 +29,7 @@ function NewsFeed() {
         }
       })();
     }
-  }, [counter, dispatch]);
+  }, [counter]);
 
   const openNewPage = (title, imageUrl, summary, url, date) => {
     const location = {

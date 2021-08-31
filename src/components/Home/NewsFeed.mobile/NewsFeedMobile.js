@@ -12,10 +12,8 @@ function NewsFeedMobile() {
   const dispatch = useDispatch();
   const apiData = useSelector((state) => state.ApiCaller);
   const apiArray = apiData.articles;
-  const error = apiData.error;
   const counter = useSelector((state) => state.CounterReducer);
   const history = useHistory();
-  console.log(apiArray);
 
   useEffect(() => {
     if (counter >= 10) {
@@ -49,7 +47,6 @@ function NewsFeedMobile() {
 
   return (
     <div id="newsfeedmobilemaindiv">
-      {error && <h1>{error}</h1>}
       {apiArray.map(({ id, title, imageUrl, publishedAt, summary, url }) => (
         <div key={id}>
           <div
