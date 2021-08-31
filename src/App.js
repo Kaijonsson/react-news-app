@@ -13,7 +13,6 @@ function App() {
 
   useEffect(() => {
     if (realtimeList.searchIsActive === true) {
-      console.log(realtimeList.searchIsActive);
       return;
     }
     if (watcher === 0 && realtimeList.articles.length > 0) {
