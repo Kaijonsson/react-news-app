@@ -8,7 +8,12 @@ import NewsFeedMobile from "../components/Home/NewsFeed.mobile/NewsFeedMobile";
 import NewsFeed from "../components/Home/NewsFeed.desktop/NewsFeed";
 import { StyledButton, HomeContainer } from "../globalCSS/styledComponents";
 
-import { CounterIncrement, CounterReset } from "../actions";
+import {
+  CounterIncrement,
+  CounterReset,
+  resetList,
+  searchTrueOrFalse,
+} from "../actions";
 import { useSelector, useDispatch } from "react-redux";
 import SearchField from "../components/Home/search/SearchField";
 
@@ -38,10 +43,17 @@ function Home() {
     }
   };
 
+  const ReloadContent = () => {
+    dispatch(searchTrueOrFalse(false));
+  };
+
   const ErrorMessage = () => {
     return (
       <div id="errorContainer">
         <h1 id="errorHeader">{error}</h1>
+        <StyledButton onClick={() => ReloadContent()}>
+          Reload newsList
+        </StyledButton>
       </div>
     );
   };
