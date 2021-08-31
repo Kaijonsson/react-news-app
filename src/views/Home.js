@@ -8,12 +8,7 @@ import NewsFeedMobile from "../components/Home/NewsFeed.mobile/NewsFeedMobile";
 import NewsFeed from "../components/Home/NewsFeed.desktop/NewsFeed";
 import { StyledButton, HomeContainer } from "../globalCSS/styledComponents";
 
-import {
-  CounterIncrement,
-  CounterReset,
-  resetList,
-  searchTrueOrFalse,
-} from "../actions";
+import { CounterIncrement, CounterReset, searchTrueOrFalse } from "../actions";
 import { useSelector, useDispatch } from "react-redux";
 import SearchField from "../components/Home/search/SearchField";
 
@@ -60,7 +55,7 @@ function Home() {
 
   return (
     <HomeContainer id="one" className="mainBG">
-      <SearchField />
+      <SearchField data={changeSearchField} />
       {error && ErrorMessage()}
       <Reset />
       {width <= 767 ? <NewsFeedMobile /> : <NewsFeed />}

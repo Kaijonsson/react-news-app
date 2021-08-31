@@ -1,19 +1,23 @@
-import React from "react";
+import React, { createRef, useEffect, useState } from "react";
 import { StyledSearchField } from "../../../globalCSS/styledComponents";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { searchList, searchTrueOrFalse } from "../../../actions";
-import ApiCaller from "../../../reducers/callApi";
 
-function SearchField() {
+function SearchField(boolean) {
   const dispatch = useDispatch();
-  const searchValue = useSelector((state) => state.ApiCaller);
-  console.log("searchValue", searchValue);
+  const inputRef = createRef();
+
+  useEffect(() => {
+    if (boolean === true) {
+      inputRef.current.value = "";
+    }
+  }, [boolean]);
+
   const onChange = (value) => {
     if (value !== "") {
       dispatch(searchList(value));
       dispatch(searchTrueOrFalse(true));
-      console.log("searchvalue: ", value);
     } else {
       dispatch(searchTrueOrFalse(false));
     }
@@ -29,6 +33,7 @@ function SearchField() {
       }}
     >
       <StyledSearchField
+        ref={inputRef}
         type="text"
         placeholder="Search titles..."
         onChange={(e) => onChange(e.target.value)}
