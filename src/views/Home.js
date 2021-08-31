@@ -20,7 +20,6 @@ function Home() {
   const realtimeList = useSelector((state) => state.ApiCaller);
 
   const error = realtimeList.error;
-  console.log(error);
 
   useEffect(() => {
     setScreenWitdh(width);
@@ -55,7 +54,7 @@ function Home() {
 
   return (
     <HomeContainer id="one" className="mainBG">
-      <SearchField data={changeSearchField} />
+      <SearchField />
       {error && ErrorMessage()}
       <Reset />
       {width <= 767 ? <NewsFeedMobile /> : <NewsFeed />}

@@ -1,18 +1,11 @@
-import React, { createRef, useEffect, useState } from "react";
+import React from "react";
 import { StyledSearchField } from "../../../globalCSS/styledComponents";
 
 import { useDispatch } from "react-redux";
 import { searchList, searchTrueOrFalse } from "../../../actions";
 
-function SearchField(boolean) {
+function SearchField() {
   const dispatch = useDispatch();
-  const inputRef = createRef();
-
-  useEffect(() => {
-    if (boolean === true) {
-      inputRef.current.value = "";
-    }
-  }, [boolean]);
 
   const onChange = (value) => {
     if (value !== "") {
@@ -33,7 +26,6 @@ function SearchField(boolean) {
       }}
     >
       <StyledSearchField
-        ref={inputRef}
         type="text"
         placeholder="Search titles..."
         onChange={(e) => onChange(e.target.value)}

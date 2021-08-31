@@ -28,7 +28,10 @@ const ApiCaller = (state = initialState, action) => {
         }
       });
 
-      if (returnSearchValue.length !== 0) {
+      const isArrayNotUndefined = returnSearchValue.find(
+        (element) => element !== undefined
+      );
+      if (returnSearchValue.length !== 0 && isArrayNotUndefined !== undefined) {
         return {
           articles: returnSearchValue.filter(
             (element) => element !== undefined
