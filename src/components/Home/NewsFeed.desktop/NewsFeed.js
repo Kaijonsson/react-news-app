@@ -1,41 +1,35 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Table from "react-bootstrap/Table";
 import { useHistory } from "react-router-dom";
 
 import "./NewsFeed.desktop.css";
 
-function NewsFeed(counter) {
-  const [articles, setArticles] = useState([]);
-  const [mounted, setMounted] = useState(true);
+import { useSelector } from "react-redux";
+import { fetchNext } from "../../../actions";
+import { useDispatch } from "react-redux";
+
+function NewsFeed() {
+  const dispatch = useDispatch();
+  const apiData = useSelector((state) => state.ApiCaller);
+  const apiArray = apiData.articles;
+  const counter = useSelector((state) => state.CounterReducer);
+  const history = useHistory();
 
   useEffect(() => {
-    const count = counter.counter;
-    const fetchArticles = async () => {
-      if (count === 0) {
-        setArticles(
-          await (
-            await fetch("https://api.spaceflightnewsapi.net/v3/articles")
-          ).json()
-        );
-      } else {
-        const newCount = count.toString();
-
+    if (counter >= 10) {
+      (async () => {
         const response = await fetch(
-          "https://api.spaceflightnewsapi.net/v3/articles?_start=" + newCount
+          "https://api.spaceflightnewsapi.net/v3/articles?_start=" + counter
         );
         const data = await response.json();
-        data.forEach((element) => {
-          setArticles((articles) => [...articles, element]);
-        });
-      }
-    };
-    fetchArticles();
-    return () => {
-      setMounted(false);
-    };
-  }, [counter, mounted]);
-
-  const history = useHistory();
+        if (data) {
+          data.forEach((element) => {
+            dispatch(fetchNext(element));
+          });
+        }
+      })();
+    }
+  }, [counter]);
 
   const openNewPage = (title, imageUrl, summary, url, date) => {
     const location = {
@@ -55,7 +49,7 @@ function NewsFeed(counter) {
     <>
       <Table striped bordered hover>
         <tbody>
-          {articles.map(
+          {apiArray.map(
             ({ publishedAt, id, imageUrl, title, summary, url }) => (
               <tr
                 key={id}

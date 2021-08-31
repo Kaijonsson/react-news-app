@@ -36,7 +36,7 @@ function SummarizedNews() {
       </div>
       <ItemSeparatorDiv />
       <div id="articleURL">
-        <a href={URL} target="_blank">
+        <a href={URL} target="_blank" rel="noreferrer">
           Article Website
         </a>
         <p>

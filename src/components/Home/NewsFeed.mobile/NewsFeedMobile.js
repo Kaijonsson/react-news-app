@@ -1,43 +1,35 @@
-import React, { useEffect, useState } from "react";
-
-import "./NewsFeedMobile.mobile.css";
+import React, { useEffect } from "react";
 import { ItemSeparatorDiv } from "../../../globalCSS/styledComponents";
-
 import { useHistory } from "react-router-dom";
 
-function NewsFeedMobile(counter) {
-  const [articles, setArticles] = useState([]);
-  const [mounted, setMounted] = useState(true);
+import "./NewsFeedMobile.mobile.css";
+
+import { useSelector } from "react-redux";
+import { fetchNext } from "../../../actions";
+import { useDispatch } from "react-redux";
+
+function NewsFeedMobile() {
+  const dispatch = useDispatch();
+  const apiData = useSelector((state) => state.ApiCaller);
+  const apiArray = apiData.articles;
+  const counter = useSelector((state) => state.CounterReducer);
+  const history = useHistory();
 
   useEffect(() => {
-    const count = counter.counter;
-    const fetchArticles = async () => {
-      // if (mounted) return;
-      if (count === 0) {
-        setArticles(
-          await (
-            await fetch("https://api.spaceflightnewsapi.net/v3/articles")
-          ).json()
-        );
-      } else {
-        const newCount = count.toString();
-
+    if (counter >= 10) {
+      (async () => {
         const response = await fetch(
-          "https://api.spaceflightnewsapi.net/v3/articles?_start=" + newCount
+          "https://api.spaceflightnewsapi.net/v3/articles?_start=" + counter
         );
         const data = await response.json();
-        data.forEach((element) => {
-          setArticles((articles) => [...articles, element]);
-        });
-      }
-    };
-    fetchArticles();
-    return () => {
-      setMounted(false);
-    };
-  }, [counter, mounted]);
-
-  const history = useHistory();
+        if (data) {
+          data.forEach((element) => {
+            dispatch(fetchNext(element));
+          });
+        }
+      })();
+    }
+  }, [counter]);
 
   const openNewPage = (title, imageUrl, summary, url, date) => {
     const location = {
@@ -55,7 +47,7 @@ function NewsFeedMobile(counter) {
 
   return (
     <div id="newsfeedmobilemaindiv">
-      {articles.map(({ id, title, imageUrl, publishedAt, summary, url }) => (
+      {apiArray.map(({ id, title, imageUrl, publishedAt, summary, url }) => (
         <div key={id}>
           <div
             className="newsCardContainer"
