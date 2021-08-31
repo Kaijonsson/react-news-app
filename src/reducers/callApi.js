@@ -40,7 +40,7 @@ const ApiCaller = (state = initialState, action) => {
       } else {
         return {
           ...state,
-          error: "Couldn't find search-term",
+          error: "Couldn't find search-term, check exact spelling.",
         };
       }
     case "SEARCH_TRUE_FALSE":

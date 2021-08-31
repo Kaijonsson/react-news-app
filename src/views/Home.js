@@ -18,6 +18,7 @@ function Home() {
   const [width] = useWindowSize();
   const counter = useSelector((state) => state.CounterReducer);
   const realtimeList = useSelector((state) => state.ApiCaller);
+  const isSearchActive = realtimeList.searchTrueOrFalse;
 
   const error = realtimeList.error;
 
@@ -26,7 +27,7 @@ function Home() {
   }, [width]);
 
   const Reset = () => {
-    if (counter) {
+    if (counter || isSearchActive === true) {
       return (
         <StyledButton onClick={() => dispatch(CounterReset())}>
           Minimize
