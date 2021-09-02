@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/react-news-app/static/css/main.2d7d3751.chunk.css",
+    "main.js": "/react-news-app/static/js/main.03f0bc29.chunk.js",
+    "main.js.map": "/react-news-app/static/js/main.03f0bc29.chunk.js.map",
+    "runtime-main.js": "/react-news-app/static/js/runtime-main.c4054c14.js",
+    "runtime-main.js.map": "/react-news-app/static/js/runtime-main.c4054c14.js.map",
+    "static/css/2.c490997a.chunk.css": "/react-news-app/static/css/2.c490997a.chunk.css",
+    "static/js/2.9f8949f8.chunk.js": "/react-news-app/static/js/2.9f8949f8.chunk.js",
+    "static/js/2.9f8949f8.chunk.js.map": "/react-news-app/static/js/2.9f8949f8.chunk.js.map",
+    "index.html": "/react-news-app/index.html",
+    "static/css/2.c490997a.chunk.css.map": "/react-news-app/static/css/2.c490997a.chunk.css.map",
+    "static/css/main.2d7d3751.chunk.css.map": "/react-news-app/static/css/main.2d7d3751.chunk.css.map",
+    "static/js/2.9f8949f8.chunk.js.LICENSE.txt": "/react-news-app/static/js/2.9f8949f8.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c4054c14.js",
+    "static/css/2.c490997a.chunk.css",
+    "static/js/2.9f8949f8.chunk.js",
+    "static/css/main.2d7d3751.chunk.css",
+    "static/js/main.03f0bc29.chunk.js"
+  ]
+}
