@@ -19,7 +19,8 @@ function NewsFeed() {
     if (counter >= 10) {
       (async () => {
         const response = await fetch(
-          "https://api.spaceflightnewsapi.net/v3/articles?_start=" + counter
+          "https://api.spaceflightnewsapi.net/v3/articles?_start=" +
+            (counter - 1)
         );
         const data = await response.json();
         if (data) {

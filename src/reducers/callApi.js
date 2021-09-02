@@ -1,5 +1,6 @@
 const initialState = {
   articles: [],
+  database: [],
   error: "",
   searchIsActive: false,
 };
@@ -9,6 +10,7 @@ const ApiCaller = (state = initialState, action) => {
     case "BASIC_CALL":
       return {
         articles: action.payload,
+        database: action.payload,
       };
     case "CALL_NEXT":
       return {
@@ -17,7 +19,8 @@ const ApiCaller = (state = initialState, action) => {
       };
     case "RESET_LIST":
       return {
-        articles: action.payload,
+        ...state,
+        articles: state.database,
       };
     case "SEARCH_LIST":
       const articlesArray = state.articles;
@@ -33,6 +36,7 @@ const ApiCaller = (state = initialState, action) => {
       );
       if (returnSearchValue.length !== 0 && isArrayNotUndefined !== undefined) {
         return {
+          ...state,
           articles: returnSearchValue.filter(
             (element) => element !== undefined
           ),

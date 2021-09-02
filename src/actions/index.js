@@ -12,10 +12,9 @@ export const fetchNext = (data) => {
   };
 };
 
-export const resetList = (payload) => {
+export const resetList = () => {
   return {
     type: "RESET_LIST",
-    payload: payload,
   };
 };
 

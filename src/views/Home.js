@@ -8,7 +8,7 @@ import NewsFeedMobile from "../components/Home/NewsFeed.mobile/NewsFeedMobile";
 import NewsFeed from "../components/Home/NewsFeed.desktop/NewsFeed";
 import { StyledButton, HomeContainer } from "../globalCSS/styledComponents";
 
-import { CounterIncrement, CounterReset, searchTrueOrFalse } from "../actions";
+import { CounterIncrement, resetList } from "../actions";
 import { useSelector, useDispatch } from "react-redux";
 import SearchField from "../components/Home/search/SearchField";
 
@@ -16,30 +16,31 @@ function Home() {
   const dispatch = useDispatch();
   const [, setScreenWitdh] = useState();
   const [width] = useWindowSize();
-  const counter = useSelector((state) => state.CounterReducer);
   const realtimeList = useSelector((state) => state.ApiCaller);
-  const isSearchActive = realtimeList.searchTrueOrFalse;
+  const isSearchActive = realtimeList.searchIsActive;
+  console.log("search: ", isSearchActive);
 
   const error = realtimeList.error;
+  console.log(realtimeList);
 
   useEffect(() => {
     setScreenWitdh(width);
   }, [width]);
 
+  const ReloadContent = () => {
+    dispatch(resetList());
+  };
+
   const Reset = () => {
-    if (counter || isSearchActive === true) {
+    if (realtimeList.articles.length > 10 || isSearchActive === true) {
       return (
-        <StyledButton onClick={() => dispatch(CounterReset())}>
-          Minimize
+        <StyledButton onClick={() => ReloadContent()}>
+          Restore original list
         </StyledButton>
       );
     } else {
       return null;
     }
-  };
-
-  const ReloadContent = () => {
-    dispatch(searchTrueOrFalse(false));
   };
 
   const ErrorMessage = () => {

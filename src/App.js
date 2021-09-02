@@ -4,48 +4,23 @@ import Home from "./views/Home";
 import SummarizedNews from "./views/SummarizedNews";
 
 import { useDispatch, useSelector } from "react-redux";
-import { fetchApi, resetList } from "./actions";
+import { fetchApi, CounterIncrement } from "./actions";
 
 function App() {
-  const watcher = useSelector((state) => state.CounterReducer);
-  const realtimeList = useSelector((state) => state.ApiCaller);
+  const counter = useSelector((state) => state.CounterReducer);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (realtimeList.searchIsActive === true) {
-      return;
-    }
-    if (watcher === 0 && realtimeList.articles.length > 0) {
-      const reloadList = async () => {
-        const response = await fetch(
-          "https://api.spaceflightnewsapi.net/v3/articles"
+    console.log(counter);
+    if (counter === 0) {
+      fetch("https://api.spaceflightnewsapi.net/v3/articles")
+        .then((response) => response.json())
+        .then(
+          (data) => dispatch(fetchApi(data)),
+          dispatch(CounterIncrement(1))
         );
-        const data = await response.json();
-        if (data) {
-          dispatch(resetList(data));
-        }
-      };
-      reloadList();
     }
-
-    if (watcher === 0) {
-      const loadApi = async () => {
-        const response = await fetch(
-          "https://api.spaceflightnewsapi.net/v3/articles"
-        );
-        const data = await response.json();
-        if (data) {
-          dispatch(fetchApi(data));
-        }
-      };
-      loadApi();
-    }
-  }, [
-    realtimeList.searchIsActive,
-    watcher,
-    dispatch,
-    realtimeList.articles.length,
-  ]);
+  }, []);
 
   return (
     <div>
