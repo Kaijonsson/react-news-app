@@ -18,10 +18,8 @@ function Home() {
   const [width] = useWindowSize();
   const realtimeList = useSelector((state) => state.ApiCaller);
   const isSearchActive = realtimeList.searchIsActive;
-  console.log("search: ", isSearchActive);
 
   const error = realtimeList.error;
-  console.log(realtimeList);
 
   useEffect(() => {
     setScreenWitdh(width);

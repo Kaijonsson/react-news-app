@@ -11,7 +11,6 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log(counter);
     if (counter === 0) {
       fetch("https://api.spaceflightnewsapi.net/v3/articles")
         .then((response) => response.json())
